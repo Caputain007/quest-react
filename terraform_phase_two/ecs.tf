@@ -16,7 +16,7 @@ resource "aws_cloudwatch_log_group" "rearc-quest-task-log-group" {
 # to be accessible within phase two - in this case, passing the correct Docker image
 # into the container and task definitions below.
 
-data "aws_ecr_repository" "rearc-quest-container-repo" {
+resource "aws_ecr_repository" "rearc-quest-container-repo" {
   name = "rearc-quest-container-repo"
 }
 
@@ -28,7 +28,7 @@ resource "aws_ecs_task_definition" "rearc-quest-task-definition" {
   container_definitions = jsonencode([
     {
       "name": "rearc-quest-container-definition",
-      "image": "${data.aws_ecr_repository.rearc-quest-container-repo.repository_url}:latest",
+      "image": "${aws_ecr_repository.rearc-quest-container-repo.repository_url}:latest",
       "essential": true,
       "memoryReservation": 128
       "portMappings": [

@@ -38,7 +38,7 @@ resource "aws_codebuild_project" "rearc-quest-codebuild-project" {
 
   source {
     type            = "GITHUB"
-    location        = "https://github.com/derekwolpert/rearc-quest.git"
+    location        = "https://github.com/oladele1440/quest-react.git"
     git_clone_depth = 1
     buildspec = "buildspec.yml"
   }

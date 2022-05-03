@@ -40,8 +40,8 @@ resource "aws_alb_target_group" "rearc-quest-target-group" {
 
 resource "aws_iam_server_certificate" "rearc-quest-ssl-cert" {
   name = "rearc-quest-ssl-cert"
-  certificate_body = file("self_signed_ssl_cert/public.pem")
-  private_key = file("self_signed_ssl_cert/private.pem")
+  certificate_body = file("self_signed_ssl_cert/server.crt")
+  private_key = file("self_signed_ssl_cert/server.key")
 }
 
 # Creates an access point to the load balancer using HTTP protocol.
